@@ -1,45 +1,54 @@
+// Sélection des éléments principaux
 const title = document.getElementById('title');
 const cursorGlow = document.getElementById('cursor-glow');
 const titleText = 'Résonances Disloquées';
 
-// Crée des spans pour chaque lettre du titre
-titleText.split('').forEach(char => {
-    const span = document.createElement('span');
-    span.textContent = char === ' ' ? ' ' : char;
-    title.appendChild(span);
-});
+// Crée chaque lettre du titre en span
+title.innerHTML = titleText
+    .split('')
+    .map(char => `<span>${char === ' ' ? ' ' : char}</span>`) // Espace insécable
+    .join('');
 
 const letters = Array.from(title.children);
 
-// Rend tout le titre cliquable vers la page suivante
-title.addEventListener('click', () => {
-    window.location.href = "presentation.html";
-});
+// Redirige vers la page présentation au clic sur le titre
+title.addEventListener('click', () => window.location.href = "presentation.html");
 
-// Gère l'effet du curseur et les lettres qui explosent
+// Gestion combinée du curseur personnalisé et de l'effet de dispersion des lettres
 document.addEventListener('mousemove', (e) => {
     cursorGlow.style.left = `${e.pageX}px`;
     cursorGlow.style.top = `${e.pageY}px`;
 
     const rect = title.getBoundingClientRect();
-    const distance = Math.sqrt(
-        Math.pow(e.clientX - (rect.left + rect.width / 2), 2) +
-        Math.pow(e.clientY - (rect.top + rect.height / 2), 2)
+    const distance = Math.hypot(
+        e.clientX - (rect.left + rect.width / 2),
+        e.clientY - (rect.top + rect.height / 2)
     );
 
+    // Déclenche l'effet si le curseur est proche du titre
     if (distance < 200) {
         document.body.classList.add('hovered');
         letters.forEach((letter) => {
-            const randomX = (Math.random() - 0.5) * 1000;
-            const randomY = (Math.random() - 0.5) * 1000;
-            letter.style.transform = `translate(${randomX}px, ${randomY}px)`;
-            setTimeout(() => {
-                letter.classList.add('hovered');
-                letter.style.transform = 'translate(0, 0)';
-            }, Math.random() * 1500);
+            const randomX = (Math.random() - 0.5) * 25; // Légèrement réduit pour plus d'harmonie
+            const randomY = (Math.random() - 0.5) * 25;
+            const rotation = (Math.random() - 0.5) * 15; // Ajout d'une légère rotation
+            letter.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${rotation}deg)`;
+            letter.style.transition = `transform 0.3s ease-out`; // Rendu plus fluide
         });
     } else {
         document.body.classList.remove('hovered');
-        letters.forEach(letter => letter.classList.remove('hovered'));
+        letters.forEach(letter => {
+            letter.style.transform = 'translate(0, 0)';
+            letter.style.transition = 'transform 0.8s ease-out'; // Retour plus naturel
+        });
     }
+});
+
+// Transition douce entre les pages
+window.addEventListener('pageshow', () => {
+    document.body.style.opacity = 1;
+});
+
+window.addEventListener('pagehide', () => {
+    document.body.style.opacity = 0;
 });

@@ -1,16 +1,18 @@
+/* Style général valable pour toutes les pages */
 body {
     margin: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #d3d3d3;
     overflow: hidden;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     position: relative;
     cursor: none;
     filter: blur(3px);
     transition: filter 1s cubic-bezier(0.25, 1, 0.5, 1);
+    padding: 0;
+    box-sizing: border-box;
 }
 
 #title {
@@ -23,7 +25,6 @@ body {
 #title span {
     display: inline-block;
     opacity: 0;
-    transform: translate(0, 0);
     transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.5s ease;
     color: #000000;
     filter: blur(3px) brightness(0.5);
@@ -53,3 +54,23 @@ body.hovered {
     transform: translate(-50%, -50%);
     box-shadow: 0 0 20px white, 0 0 40px #e6e0d5;
 }
+
+/* Style spécifique par page */
+body.presentation { background-color: #f4f4f4; color: #111; }
+body.projets { background-color: #e0e0e0; color: #333; }
+body.videos { background-color: #111; color: #fff; }
+body.musiques { background-color: #222; color: #ddd; }
+body.bio { background-color: #fff5e1; color: #333; }
+body.contact { background-color: #f0f0f0; color: #555; }
+
+/* Transition douce entre les pages */
+body.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
