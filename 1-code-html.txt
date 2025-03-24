@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résonances Disloquées</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Megrim&display=swap">
+    <link rel="stylesheet" href="style.css"> <!-- Lien vers le CSS -->
+</head>
+
+<body>
+    <div id="cursor-glow"></div>
+    <h1 id="title"></h1>
+
+    <script src="script.js"></script> <!-- Lien vers le JS -->
+</body>
+</html>
