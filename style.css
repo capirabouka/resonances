@@ -1,76 +1,54 @@
-/* Style général valable pour toutes les pages */
-body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    font-family: 'Open Sans', sans-serif;
-    position: relative;
-    cursor: none;
-    filter: blur(3px);
-    transition: filter 1s cubic-bezier(0.25, 1, 0.5, 1);
-    padding: 0;
-    box-sizing: border-box;
-}
+  </style>
+</head>
 
-#title {
-    font-size: 3rem;
-    display: flex;
-    gap: 5px;
-    cursor: pointer;
-}
+<body>
+    <div id="cursor-glow"></div>
+  <h1 id="title"></h1>
 
-#title span {
-    display: inline-block;
-    opacity: 0;
-    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.5s ease;
-    color: #000000;
-    filter: blur(3px) brightness(0.5);
-    text-shadow: 0 0 8px #8a8c99, 0 0 16px #7b6c9e, 0 0 32px #6b5e8f;
-    font-family: 'Megrim', cursive;
-    z-index: 1;
-}
 
-body.hovered {
-    filter: blur(0);
-}
+    <script>
+        const title = document.getElementById('title');
+        const cursorGlow = document.getElementById('cursor-glow');
+        const titleText = 'Résonances Disloquées';
 
-#title span.hovered {
-    opacity: 1;
-    transform: translate(0, 0);
-    filter: brightness(1.4) blur(0);
-    text-shadow: 0 0 50px #b0a9c5, 0 0 100px #a7a3ba, 0 0 150px #8a8c99;
-}
+        // Crée des spans pour chaque lettre du titre
+        titleText.split('').forEach(char => {
+            const span = document.createElement('span');
+            span.textContent = char === ' ' ? ' ' : char;
+            title.appendChild(span);
+        });
 
-#cursor-glow {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background: white;
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 20px white, 0 0 40px #e6e0d5;
-}
+        const letters = Array.from(title.children);
 
-/* Style spécifique par page */
-body.presentation { background-color: #f4f4f4; color: #111; }
-body.projets { background-color: #e0e0e0; color: #333; }
-body.videos { background-color: #111; color: #fff; }
-body.musiques { background-color: #222; color: #ddd; }
-body.bio { background-color: #fff5e1; color: #333; }
-body.contact { background-color: #f0f0f0; color: #555; }
+        // Rend tout le titre cliquable vers la page suivante
+        title.addEventListener('click', () => {
+            window.location.href = "presentation.html";
+        });
 
-/* Transition douce entre les pages */
-body.fade-in {
-    opacity: 0;
-    animation: fadeIn 0.8s ease-in forwards;
-}
+        // Gère l'effet du curseur et les lettres qui explosent
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = `${e.pageX}px`;
+            cursorGlow.style.top = `${e.pageY}px`;
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+            const rect = title.getBoundingClientRect();
+            const distance = Math.sqrt(
+                Math.pow(e.clientX - (rect.left + rect.width / 2), 2) +
+                Math.pow(e.clientY - (rect.top + rect.height / 2), 2)
+            );
 
+            if (distance < 200) {
+                document.body.classList.add('hovered');
+                letters.forEach((letter) => {
+                    const randomX = (Math.random() - 0.5) * 1000;
+                    const randomY = (Math.random() - 0.5) * 1000;
+                    letter.style.transform = `translate(${randomX}px, ${randomY}px)`;
+                    setTimeout(() => {
+                        letter.classList.add('hovered');
+                        letter.style.transform = 'translate(0, 0)';
+                    }, Math.random() * 1500);
+                });
+            } else {
+                document.body.classList.remove('hovered');
+                letters.forEach(letter => letter.classList.remove('hovered'));
+            }
+        });
