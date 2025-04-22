@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bio</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Megrim&family=Open+Sans:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="bio.css" />
+  <link rel="stylesheet" href="navbar.css" />
+  <style>
+    .top-banner {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: 70px;
+      margin-right: 40px;
+    }
+
+    .logo-block img {
+      max-width: 90px;
+      height: auto;
+    }
+
+    .logo-block {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: logoFadeIn 1s ease forwards 2s;
+    }
+
+    @keyframes logoFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+  <a href="presentation.html">Accueil</a>
+  <a href="projets.html">Projets</a>
+  <a href="videos.html">Vidéos</a>
+  <a href="musiques.html">Musiques</a>
+  <a href="bio.html">Bio</a>
+  <a href="contact.html">Contact</a>
+  <div class="lang-selector">
+    <div class="lang-current">FR</div>
+    <div class="lang-options">
+      <div class="lang-option">ENG</div>
+      <div class="lang-option">ESP</div>
+      <div class="lang-option">RU</div>
+      <div class="lang-option">HY</div>
+    </div>
+  </div>
+</div>
+
+<div class="top-banner">
+  <div class="logo-block">
+    <img src="image/logo.jpg" alt="Logo Chambre d'Écho" class="logo-image">
+  </div>
+</div>
+
+<div class="container">
+  <h1>Bio</h1>
+  <p>Ici apparaîtra une biographie personnelle, un parcours artistique, et quelques anecdotes.</p>
+</div>
+
+<script src="presentation.js"></script>
+</body>
+</html>

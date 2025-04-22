@@ -6,20 +6,20 @@ body {
     background-color: #fff;
     color: #111;
     overflow-x: hidden;
-}
-
-/* Ligne horizontale nom + logo */
-.top-banner {
+  }
+  
+  /* Ligne horizontale nom + logo */
+  .top-banner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 70px;
     margin-left: 60px;
     margin-right: 40px;
-}
-
-/* Nom animé */
-.name-tag {
+  }
+  
+  /* Nom animé */
+  .name-tag {
     position: relative;
     font-family: 'Megrim', cursive;
     font-size: 3.4rem;
@@ -27,12 +27,12 @@ body {
     margin-left: 120px;
     margin-right: auto;
     padding-bottom: 20px;
-    animation: fadeIn 1s forwards 0.6s;
+    animation: fadeIn 0.6s forwards 0.4s;
     opacity: 0;
     letter-spacing: 1px;
-}
-
-.name-tag::after {
+  }
+  
+  .name-tag::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -42,75 +42,78 @@ body {
     background: linear-gradient(to right, #111, #666, #999, transparent 85%);
     opacity: 0.6;
     filter: blur(0.5px);
-}
-
-.letter {
+  }
+  
+  /* Vibration des lettres */
+  .letter {
     display: inline-block;
     transition: transform 0.2s ease;
-}
-
-.name-tag:hover .letter {
+  }
+  
+  .name-tag:hover .letter {
     animation: vibrate 0.3s infinite;
-}
-
-@keyframes vibrate {
+  }
+  
+  @keyframes vibrate {
     0% { transform: translate(0, 0) rotate(0deg); }
     25% { transform: translate(-0.5px, 1px) rotate(0.3deg); }
     50% { transform: translate(0.5px, -1px) rotate(-0.3deg); }
     75% { transform: translate(-0.2px, 0.8px) rotate(0.2deg); }
     100% { transform: translate(0, 0) rotate(0deg); }
-}
-
-/* Logo */
-.logo-block img {
+  }
+  
+  /* Logo */
+  .logo-block img {
     max-width: 160px;
     height: auto;
-}
-
-/* Conteneur de texte */
-.container {
+  }
+  
+  /* Conteneur */
+  .container {
     padding-top: 0.1cm;
     width: 60%;
     margin: 0;
     text-align: left;
     opacity: 0;
-    animation: fadeIn 1s forwards 1s;
+    animation: fadeIn 0.6s forwards 0.4s;
     transform: translateX(-10%);
     margin-left: 60px;
     padding-bottom: 200vh;
-}
-
-/* Titres */
-h1 {
+  }
+  
+  /* Titres */
+  h1 {
     font-family: 'Megrim', cursive;
     font-size: 3rem;
     text-shadow: 0 0 20px #ff5252;
     opacity: 0;
-    animation: explodeText 1s forwards ease-out;
-}
-
-h2 {
+    animation: explodeText 0.6s forwards ease-out;
+  }
+  
+  h2 {
     font-family: 'Megrim', cursive;
     font-size: 2rem;
     margin-top: 20px;
-}
-
-/* Texte */
-p {
+  }
+  
+  /* Texte */
+  p {
     font-size: 1.2rem;
     line-height: 1.6;
+    font-family: 'Open Sans', sans-serif;
     opacity: 0;
-    animation: fadeIn 1s forwards 1.5s;
-}
-
-/* Animations */
-@keyframes fadeIn {
+    animation: fadeIn 0.6s forwards 0.6s;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes explodeText {
+  }
+  
+  @keyframes explodeText {
     0% { opacity: 0; transform: scale(0.2) rotate(-20deg); }
     80% { opacity: 1; transform: scale(1.1) rotate(10deg); }
     100% { transform: scale(1) rotate(0deg); }
-}
+  }
+  
