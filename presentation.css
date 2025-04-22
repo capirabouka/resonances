@@ -8,47 +8,75 @@ body {
     overflow-x: hidden;
 }
 
-/* Barre de navigation */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1cm;
-    background: linear-gradient(90deg, #ddd, #fff);
+/* Ligne horizontale nom + logo */
+.top-banner {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    padding: 0 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    z-index: 10;
-    opacity: 0;
-    animation: fadeIn 1s forwards 0.5s;
+    margin-top: 70px;
+    margin-left: 60px;
+    margin-right: 40px;
 }
 
-.navbar a {
-    color: #111;
-    text-decoration: none;
+/* Nom animé */
+.name-tag {
+    position: relative;
     font-family: 'Megrim', cursive;
-    font-size: 1.2rem;
-    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 3.4rem;
+    color: #111;
+    margin-left: 120px;
+    margin-right: auto;
+    padding-bottom: 20px;
+    animation: fadeIn 1s forwards 0.6s;
+    opacity: 0;
+    letter-spacing: 1px;
 }
 
-.navbar a:hover {
-    color: #ff5252;
-    transform: scale(1.1);
+.name-tag::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 120%;
+    background: linear-gradient(to right, #111, #666, #999, transparent 85%);
+    opacity: 0.6;
+    filter: blur(0.5px);
 }
 
-/* Conteneur du contenu */
+.letter {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.name-tag:hover .letter {
+    animation: vibrate 0.3s infinite;
+}
+
+@keyframes vibrate {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-0.5px, 1px) rotate(0.3deg); }
+    50% { transform: translate(0.5px, -1px) rotate(-0.3deg); }
+    75% { transform: translate(-0.2px, 0.8px) rotate(0.2deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Logo */
+.logo-block img {
+    max-width: 160px;
+    height: auto;
+}
+
+/* Conteneur de texte */
 .container {
-    padding-top: 2cm;
+    padding-top: 0.1cm;
     width: 60%;
-    margin: 0 auto;
+    margin: 0;
     text-align: left;
     opacity: 0;
     animation: fadeIn 1s forwards 1s;
     transform: translateX(-10%);
-    margin-left: 2cm;
+    margin-left: 60px;
     padding-bottom: 200vh;
 }
 

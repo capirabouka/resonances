@@ -6,18 +6,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // Crée des spans pour chaque lettre du titre
     titleText.split('').forEach(char => {
         const span = document.createElement('span');
-        span.textContent = char === ' ' ? ' ' : char;
+        span.textContent = char === ' ' ? ' ' : char; // espace insécable
         title.appendChild(span);
     });
 
     const letters = Array.from(title.children);
 
-    // Rend tout le titre cliquable vers la page suivante
+    // Redirige vers la page présentation au clic
     title.addEventListener('click', () => {
         window.location.href = "presentation.html";
     });
 
-    // Gère l'effet du curseur et les lettres qui explosent
+    // Gère l'effet du curseur lumineux et des lettres qui explosent
     document.addEventListener('mousemove', (e) => {
         cursorGlow.style.left = `${e.pageX}px`;
         cursorGlow.style.top = `${e.pageY}px`;
