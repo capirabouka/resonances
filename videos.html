@@ -4,9 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vidéos</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Megrim&family=Open+Sans:wght@400;700&display=swap" />
-  <link rel="stylesheet" href="videos.css" />
+
+  <!-- Typo -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Megrim&family=Open+Sans&display=swap" />
+
+  <!-- CSS -->
   <link rel="stylesheet" href="navbar.css" />
+  <link rel="stylesheet" href="videos.css" />
+
+  <!-- Logo style -->
   <style>
     .top-banner {
       display: flex;
@@ -15,15 +21,18 @@
       margin-top: 70px;
       margin-right: 40px;
     }
-    .logo-block img {
-      max-width: 90px;
-      height: auto;
-    }
+
     .logo-block {
       opacity: 0;
       transform: translateY(20px);
       animation: logoFadeIn 1s ease forwards 2s;
     }
+
+    .logo-image {
+      max-width: 90px;
+      height: auto;
+    }
+
     @keyframes logoFadeIn {
       to {
         opacity: 1;
@@ -34,6 +43,7 @@
 </head>
 <body>
 
+<!-- Barre de navigation -->
 <div class="navbar">
   <a href="presentation.html">Accueil</a>
   <a href="projets.html">Projets</a>
@@ -52,17 +62,42 @@
   </div>
 </div>
 
+<!-- Logo -->
 <div class="top-banner">
   <div class="logo-block">
     <img src="image/logo.jpg" alt="Logo Chambre d'Écho" class="logo-image">
   </div>
 </div>
 
+<!-- Contenu principal -->
 <div class="container">
   <h1>Vidéos</h1>
-  <p>Cette section accueillera bientôt une sélection de vidéos liées à mon travail.</p>
+  <p class="video-subtitle">The voices of the Edge</p>
+  <p>Une série de témoignages filmés, porteurs de récits et d’échos personnels, sociaux, politiques.</p>
+
+  <div class="carousel-wrapper">
+    <button class="carousel-btn left">&lt;</button>
+    <div class="carousel" id="carousel">
+      <!-- Exemple de vidéos -->
+      <div class="video-card">
+        <video src="videos-/Amir Zakariazadeh.mp4" controls></video>
+        <p>Amir Zakariazadeh</p>
+      </div>
+      <div class="video-card">
+        <video src="videos-/Ani Khitapszyan.mp4" controls></video>
+        <p>Ani Khitapszyan</p>
+      </div>
+      <div class="video-card">
+        <video src="videos-/Jean.mp4" controls></video>
+        <p>Jean</p>
+      </div>
+    </div>
+    <button class="carousel-btn right">&gt;</button>
+  </div>
 </div>
 
+<!-- JS -->
+<script src="videos.js"></script>
 <script src="presentation.js"></script>
 </body>
 </html>
