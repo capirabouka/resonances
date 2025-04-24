@@ -4,19 +4,16 @@ body {
   color: #111;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
 }
 
-/* Conteneur principal */
 .container {
   padding-top: 1.5cm;
-  width: 80%;
+  width: 90%;
   margin: auto;
-  padding-bottom: 3cm;
   animation: fadeIn 0.6s ease forwards;
+  padding-bottom: 3cm;
 }
 
-/* Titre principal */
 h1 {
   font-family: 'Megrim', cursive;
   font-size: 3rem;
@@ -26,55 +23,74 @@ h1 {
 p {
   font-size: 1.2rem;
   line-height: 1.6;
+  margin-bottom: 40px;
 }
 
-/* Bande scrollable horizontale */
-.scroll-wrapper {
-  margin-top: 30px;
-  padding: 20px;
-  background: #1c1c1c;
-  border-radius: 16px;
+/* Bande défilante sans fond */
+.video-scroll-wrapper {
+  position: relative;
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
   scroll-behavior: smooth;
+  padding: 10px 0;
 }
 
-.scroll-inner {
-  display: inline-flex;
-  gap: 20px;
-  align-items: flex-start;
+/* Bordures de dégradé sur les côtés */
+.video-scroll-wrapper::before,
+.video-scroll-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 }
 
+.video-scroll-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #fff 0%, transparent 100%);
+}
+
+.video-scroll-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #fff 0%, transparent 100%);
+}
+
+/* Bloc vidéo horizontal */
 .video-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: inline-block;
+  width: 240px;
+  margin: 0 12px;
+  vertical-align: top;
   text-align: center;
-  flex: 0 0 auto;
-  width: 220px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.6s ease forwards;
+  animation-delay: 0.3s;
 }
 
 .video-block video {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 10px;
   border: 2px solid #444;
   transition: transform 0.3s ease;
 }
 
 .video-block video:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .video-title {
-  margin-top: 8px;
+  margin-top: 10px;
   font-family: 'Megrim', cursive;
   font-size: 1rem;
-  color: #eee;
+  color: #333;
 }
 
-/* Logo et animation */
+/* Logo */
 .top-banner {
   display: flex;
   justify-content: flex-end;
@@ -96,7 +112,7 @@ p {
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
