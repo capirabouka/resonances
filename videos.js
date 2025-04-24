@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const grid = document.getElementById("video-grid");
+  const scrollInner = document.querySelector(".scroll-inner");
 
   const videos = [
     "Achode-Karibian.mp4", "Amir-Zakariazadeh.mp4", "Angie-Stifler.mp4", "Ani-Khitapszyan.mp4",
@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   videos.forEach(filename => {
     const name = filename.replace(/-/g, ' ').replace('.mp4', '');
+
     const block = document.createElement("div");
     block.classList.add("video-block");
 
@@ -27,6 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     block.appendChild(video);
     block.appendChild(title);
-    grid.appendChild(block);
+    scrollInner.appendChild(block);
   });
 });
